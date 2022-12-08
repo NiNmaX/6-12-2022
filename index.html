@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 50px;
+        background: #fff;
+      }
+      #container {
+        width: 550px;
+        height: 350px;
+        background-color: aqua;
+        margin: auto;
+        border-radius: 30px;
+      }
+      h1 {
+        font-size: 40px;
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        margin-left: 170px;
+        background: #0000ff;
+        padding: 10px;
+        border-radius: 5px;
+        display: inline-block;
+      }
+      #weekday {
+        font-size: 70px;
+        color: rgb(255, 187, 0);
+        margin-left: 170px;
+      }
+      #phrase {
+        font-size: 25px;
+        color: #0000ff;
+        margin-left: 170px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Bugun:</h1>
+      <div>
+        <span id="weekday"> Haftaning kunini ko'rsatish: </span><br />
+        <span id="phrase"> Rejani ko'rsatish: </span>
+      </div>
+    </div>
+    <!-- JS -->
+    <script>
+      let date = new Date();
+      let dayOfWeekNumber = date.getDay();
+      let nameOfDay;
+      let quote;
+
+      switch (dayOfWeekNumber) {
+        case 0:
+          nameOfDay = "Yakshanba";
+          quote = "Dam olish kunim";
+          break;
+        case 1:
+          nameOfDay = "Dushanba";
+          quote = "Darsimning birinchi kuni";
+          break;
+        case 2:
+          nameOfDay = "Seshanba";
+          quote = "19:00 Dasturlash darsim";
+          break;
+        case 3:
+          nameOfDay = "Chorshanba";
+          quote = "Bozorga boraman";
+          break;
+        case 4:
+          nameOfDay = "Payshanba";
+          quote = "English classim bor";
+          break;
+        case 5:
+          nameOfDay = "Juma";
+          quote = "Do'stlarim bilan aylanaman";
+          break;
+        case 6:
+          nameOfDay = "Shanba";
+          quote = "Hamma mazularni takrorlayman";
+          break;
+      }
+      let weekdayDiv = document.getElementById("weekday");
+      weekdayDiv.innerHTML = `${nameOfDay}`;
+      let quoteDiv = document.getElementById("phrase");
+      quoteDiv.innerHTML = `${quote}`
+    </script>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- CSS -->
+    <style>
+      *,
+      *::before {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        background: rgb(111, 111, 228);
+      }
+      #container {
+        background-color: bisque;
+        padding: 30px 30px;
+        width: 400px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        border-radius: 5px;
+        font-family: sans-serif;
+        box-shadow: 25px 25px 25px rgba(0, 0, 0, 0.15);
+      }
+      h1 {
+        font-size: 25px;
+        color: wheat;
+        background-color: rgb(14, 104, 104);
+        text-align: center;
+        letter-spacing: 1px;
+        margin-bottom: 40px;
+      }
+      .row{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+      }
+      input[type="range"]{
+        width: 80%;
+        height: 4.5px;
+        -webkit-appearance: none;
+        appearance: none;
+        /* background: yellow; */
+        border-radius: 3px;
+        outline: none;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>BMI - Body Mass Index</h1>
+      <div id="display">
+        <p id="result">20.0</p>
+        <p id="category">Yetarli vazin 👍</p>
+      </div>
+      <div class="row">
+        <input
+          type="range"
+          min="20"
+          max="200"
+          value="20"
+          id="weight"
+          oninput="calculate()"
+        />
+        <span id="weight-val">20 kg</span>
+      </div>
+      <div id="row">
+        <input
+          type="range"
+          min="100"
+          max="250"
+          value="100"
+          id="height"
+          oninput="calculate()"
+        />
+        <span id="height-val">100 cm</span>
+      </div>
+    </div>
+    <!-- JS -->
+    <script>
+      function calculate() {
+        var bmi;
+        var result = document.getElementById("result");
+        var height = parseInt(document.getElementById("height").value);
+        var weight = parseInt(document.getElementById("weight").value);
+
+        document.getElementById("weight-val").textContent = weight + " kg";
+        document.getElementById("height-val").textContent = height + " cm";
+
+        bmi = weight / Math.pow(height / 100, 2).toFixed(1);
+        result.textContent = bmi;
+
+        if (bmi < 18.5) {
+          category = "Kam vazin 😒";
+          result.style.color = "red";
+        } else if (bmi >= 18.5 && bmi <= 24.9) {
+          category = "Yetarli vazin 👍";
+          result.style.color = "green";
+        } else if (bmi >= 25 && bmi <= 29.9) {
+          category = "Ortiqcha vazin 😯";
+          result.style.color = "green";
+        } else {
+          category = "Semirib ketibsiz 😮";
+          result.style.color = "black";
+        }
+        document.getElementById("category").textContent = category;
+      }
+    </script>
+  </body>
+</html>
